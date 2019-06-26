@@ -1,0 +1,17 @@
+var express = require('express');
+var router = express.Router();
+var ctrl = require('../controllers/userController');
+var auth = require('../controllers/auth');
+router.post("/token", ctrl.login);
+router.post("/register", ctrl.register);
+router.put("/changeavatar", auth.verifyToken, ctrl.changeavatar);
+router.put("/changenotification", auth.verifyToken, ctrl.changenotification);
+router.put("/updateprofile", auth.verifyToken, ctrl.updateprofile);
+router.delete("/delete", auth.verifyToken, ctrl.deleteAccount);
+router.get("/findbyemail", auth.verifyToken, ctrl.findbyemail);
+router.get("/info", auth.verifyToken, ctrl.getuserinfo);
+router.put("/forgotpassword", ctrl.forgotpassword);
+router.put("/changepassword", auth.verifyToken, ctrl.changepassword);
+router.put("/resetpassword", auth.verifyToken, ctrl.resetpassword);
+router.put("/confirmemail", auth.verifyToken, ctrl.confirmemail);
+module.exports = router;

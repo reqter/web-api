@@ -1,0 +1,9 @@
+{
+    "name": "Reqter Web Api",
+    "version": "0.0.0",
+    "description": "Reqter web api",
+    "apidoc": {
+      "title": "Reqter web api",
+      "url" : "https://api.reqter.com/v1"
+    }
+  }
