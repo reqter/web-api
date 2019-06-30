@@ -1,17 +1,19 @@
 {
   "name": "web-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "RFQ admin panel gateway",
   "main": "index.js",
   "scripts": {
-    "start": "node ./src/bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=production node ./src/bin/www",
+    "startdev": "node ./src/bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "apidoc -i ./src/ -o apidoc/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reqter/web-api.git"
+    "url": "git+https://github.com/reqter/web-apu.git"
   },
-  "author": "fakhreddin rezaei",
+  "author": "Fakhreddin Rezaei",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/reqter/web-api/issues"

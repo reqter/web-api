@@ -1,9 +1,9 @@
 {
-    "name": "Reqter Web Api",
+    "name": "Mivapp Api",
     "version": "0.0.0",
-    "description": "Reqter web api",
+    "description": "Mivapp backend api",
     "apidoc": {
-      "title": "Reqter web api",
-      "url" : "https://api.reqter.com/v1"
+      "title": "Mivapp api",
+      "url" : "https://api.mivapp.ir/v1"
     }
   }
