@@ -6,7 +6,7 @@ const broker = require('./serviceBroker');
 
 
 exports.getAll = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId,  body : req.body}, 'getrequests').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId,  body : req.body}, 'getforms').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -25,7 +25,7 @@ exports.getAll = function(req, res, next) {
   }
 
 exports.getById = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : {id : req.query.id}}, 'getrequestbyid').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : {id : req.query.id}}, 'getformbyid').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -44,7 +44,7 @@ exports.getById = function(req, res, next) {
 }
 
 exports.getByLink = function(req, res, next) {
-    broker.sendRPCMessage({body : {link : req.query.link}}, 'getrequestbylink').then((result)=>{
+    broker.sendRPCMessage({body : {link : req.query.link}}, 'getformbylink').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -62,7 +62,7 @@ exports.getByLink = function(req, res, next) {
     });
 }
   exports.add = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'addrequest').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'addform').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -81,7 +81,7 @@ exports.getByLink = function(req, res, next) {
 }
 
 exports.update = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'updaterequest').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'updateform').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -100,7 +100,7 @@ exports.update = function(req, res, next) {
 }
 
 exports.remove = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'removerequest').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'removeform').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -119,7 +119,7 @@ exports.remove = function(req, res, next) {
 }
 
 exports.publish = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'publishrequest').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'publishform').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -138,7 +138,7 @@ exports.publish = function(req, res, next) {
 }
 
 exports.unPublish = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'unpublishrequest').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'unpublishform').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -157,7 +157,7 @@ exports.unPublish = function(req, res, next) {
 }
 
 exports.archive = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'archiverequest').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'archiveform').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -176,7 +176,7 @@ exports.archive = function(req, res, next) {
 }
 
 exports.unArchive = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'unarchiverequest').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'unarchiveform').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -197,7 +197,7 @@ exports.unArchive = function(req, res, next) {
 
 exports.filter = function(req, res, next) {
     console.log(req)
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : {name : req.query.name, category : req.query.category, requestType : req.query.requestType, status : req.query.status}}, 'filterrequests').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : {name : req.query.name, category : req.query.category, formType : req.query.formType, status : req.query.status}}, 'filterforms').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
