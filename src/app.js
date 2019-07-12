@@ -15,12 +15,13 @@ app.use(helmet());
 app.use(cors());
 
 var oauth = require('./routes/oauth');
-var apps = require('./routes/apps');
 var ctypes = require('./routes/contentTypes');
 var assets = require('./routes/assets');
 var categories = require('./routes/categories');
 var spaces = require('./routes/spaces');
 var forms = require('./routes/forms');
+var requests = require('./routes/requests');
+var quotes = require('./routes/quote');
 
 // a middleware function with no mount path. This code is executed for every request to the router
 
@@ -30,10 +31,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use("/auth", oauth);
-app.use("/apps", apps);
 app.use("/ctypes", ctypes);
 app.use("/assets", assets);
 app.use("/categories", categories);
 app.use("/spaces", spaces);
 app.use("/forms", forms);
+app.use("/requests", requests);
+app.use("/quotes", quotes);
 module.exports = app;

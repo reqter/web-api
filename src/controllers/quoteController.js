@@ -6,7 +6,7 @@ const broker = require('./serviceBroker');
 
 
 exports.getAll = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId,  body : req.body}, 'getrequests').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId,  body : req.body}, 'getquotes').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -25,7 +25,7 @@ exports.getAll = function(req, res, next) {
   }
 
 exports.getById = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : {id : req.query.id}}, 'getrequestsbyid').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : {id : req.query.id}}, 'getquotesbyid').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -43,8 +43,27 @@ exports.getById = function(req, res, next) {
     });
 }
 
-  exports.submit = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'submitrequest').then((result)=>{
+exports.getByRequestId = function(req, res, next) {
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : {requestId : req.query.requestId}}, 'getquotesbyrequestid').then((result)=>{
+        var obj = JSON.parse(result.toString('utf8'));
+        if (!obj.success)
+        {
+            if (obj.error)
+                return res.status(500).json(obj);
+            else
+            {
+                res.status(404).json(obj);
+            }
+        }
+        else
+        {
+            res.status(200).json(obj.data);
+        }
+    });
+}
+
+  exports.add = function(req, res, next) {
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'addquote').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -63,7 +82,7 @@ exports.getById = function(req, res, next) {
 }
 
 exports.update = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'updaterequest').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'updatequote').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -82,7 +101,7 @@ exports.update = function(req, res, next) {
 }
 
 exports.remove = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'removerequest').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId, body : req.body}, 'removequote').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
@@ -127,7 +146,7 @@ exports.filter = function(req, res, next) {
             contentType : req.query.contentType, 
             status : req.query.status,
             formId : req.query.formId
-        }}, 'filterrequests').then((result)=>{
+        }}, 'filterquotes').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
