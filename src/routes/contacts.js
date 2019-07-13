@@ -7,7 +7,7 @@ router.get("/filter", auth.verifyToken, controller.filter);
 router.get("/getall", auth.verifyToken, controller.getAll);
 router.get("/getbyid", auth.verifyToken, controller.getById);
 
-router.post("/submit", controller.submit);
+router.post("/add", controller.add);
 
 router.delete("/remove", auth.verifyToken, controller.remove);
 
