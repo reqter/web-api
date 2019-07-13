@@ -41,5 +41,5 @@ app.use("/forms", forms);
 app.use("/requests", requests);
 app.use("/quotes", quotes);
 app.use("/contacts", contacts);
-app.use("/compnaies", companies);
+app.use("/companies", companies);
 module.exports = app;
