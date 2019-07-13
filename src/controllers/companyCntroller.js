@@ -6,7 +6,7 @@ const broker = require('./serviceBroker');
 
 
 exports.getAll = function(req, res, next) {
-    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId,  body : req.body}, 'getcompanies').then((result)=>{
+    broker.sendRPCMessage({spaceId : req.spaceid, userId : req.userId,  body : req.body}, 'getallcompanies').then((result)=>{
         var obj = JSON.parse(result.toString('utf8'));
         if (!obj.success)
         {
