@@ -22,6 +22,8 @@ var spaces = require('./routes/spaces');
 var forms = require('./routes/forms');
 var requests = require('./routes/requests');
 var quotes = require('./routes/quote');
+var contacts = require('./routes/contacts');
+var companies = require('./routes/companies');
 
 // a middleware function with no mount path. This code is executed for every request to the router
 
@@ -38,4 +40,6 @@ app.use("/spaces", spaces);
 app.use("/forms", forms);
 app.use("/requests", requests);
 app.use("/quotes", quotes);
+app.use("/contacts", contacts);
+app.use("/compnaies", companies);
 module.exports = app;
