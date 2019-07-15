@@ -8,7 +8,7 @@ router.get("/getall", auth.verifyToken, controller.getAll);
 router.get("/partners", auth.verifyToken, controller.getpartners);
 router.get("/getbyid", auth.verifyToken, controller.getById);
 
-router.post("/add", controller.add);
+router.post("/add", auth.verifyToken, controller.add);
 
 router.delete("/remove", auth.verifyToken, controller.remove);
 
